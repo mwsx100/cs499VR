@@ -6,6 +6,6 @@ in Assets folder, there is a folder called Prefabs, in Prefabs there is the VRRi
 # To Run in Command Line: 
 1. Open terminal/command prompt
 2. Open desired directory
-4. git pull url
+4. https://github.com/mwsx100/cs499VR.git
 5. Open Unity Application
 6. Go to file to open app
