@@ -8,9 +8,9 @@ public class WhiteboardMarker : MonoBehaviour
     [SerializeField] private Transform _tip;
     [SerializeField] private int _penSize = 5; //size of pen
 
-    private Renderer _renderer;
-    private Color[] _colors;
-    private float _tipHeight;
+    private Renderer _renderer; //renderer
+    private Color[] _colors; //color array
+    private float _tipHeight; 
 
     private RaycastHit _touch;
     private Whiteboard _whiteboard;
