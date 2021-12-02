@@ -104,7 +104,7 @@ public class PointToDraw : MonoBehaviour
 
             if (_hitLastFrame)
             {
-                PixelCircle(x, y, _whiteboard, _penSize, pressure, _colors);
+                PixelCircle2(x, y, _whiteboard, _penSize, pressure, _colors);
                 float pressureInc = Math.Abs((oldPressure - pressure) / 100); //gets the absolute value of the difference between the old and new pressure, divided by the number of increments in the following for loop
                 float temp = pressure; //temporary variable to keep track of the pressure variable
                 pressure = oldPressure; //sets pressure to old pressure
@@ -115,12 +115,12 @@ public class PointToDraw : MonoBehaviour
                     else pressure += pressureInc; //else gradually increment
                     var lerpX = (int)Mathf.Lerp(a: _lastHitPos.x, b: x, t: f); 
                     var lerpY = (int)Mathf.Lerp(a: _lastHitPos.y, b: y, t: f);
-                    PixelCircle(lerpX, lerpY, _whiteboard, _penSize, pressure, _colors);
+                    PixelCircle2(lerpX, lerpY, _whiteboard, _penSize, pressure, _colors);
                 }
                 pressure = temp; //reset pressure
                 _whiteboard.texture.Apply(); //apply changes
             }
-
+           
             _lastHitPos = new Vector2(x, y); //caches data for the next frame loop
             _hitLastFrame = true; 
             oldPressure = pressure; //caches current pressure for next frame loop
@@ -158,6 +158,35 @@ public class PointToDraw : MonoBehaviour
 
     }
 
+
+
+    private void PixelCircle2(int x, int y, Whiteboard _whiteboard, int _penSize, float pressure, Color[] _colors)//sets 17 squares positioned in a way that they look circular    
+    {
+        _whiteboard.texture.SetPixels(x, y, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors); //center/origin square
+        _whiteboard.texture.SetPixels(x - (int)(_penSize * pressure), y, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors); //_penSize is multiplied by the pressure of the trigger press
+        _whiteboard.texture.SetPixels(x + (int)(_penSize * pressure), y, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors); //positive x
+        _whiteboard.texture.SetPixels(x, y + (int)(_penSize * pressure), blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors); //positive y
+        _whiteboard.texture.SetPixels(x, y - (int)(_penSize * pressure ), blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors); //negative y
+
+        _whiteboard.texture.SetPixels(x - (int)(_penSize * pressure * Math.Sqrt(2)) / 2, y + (int)(_penSize * pressure * Math.Sqrt(2)) / 2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors); /*"corners" of the circle*/
+        _whiteboard.texture.SetPixels(x - (int)(_penSize * pressure * Math.Sqrt(2)) / 2, y - (int)(_penSize * pressure * Math.Sqrt(2)) / 2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+        _whiteboard.texture.SetPixels(x + (int)(_penSize * pressure * Math.Sqrt(2)) / 2, y - (int)(_penSize * pressure * Math.Sqrt(2)) / 2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+        _whiteboard.texture.SetPixels(x + (int)(_penSize * pressure * Math.Sqrt(2)) / 2, y + (int)(_penSize * pressure * Math.Sqrt(2)) / 2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+
+        _whiteboard.texture.SetPixels(x - (int)(_penSize * pressure) / 2, y + (int)(_penSize * pressure * Math.Sqrt(3))/2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);/*more pixels to smooth it out.*/
+        _whiteboard.texture.SetPixels(x - (int)(_penSize * pressure * Math.Sqrt(3)) / 2, y + (int)(_penSize * pressure)/2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+
+        _whiteboard.texture.SetPixels(x - (int)(_penSize * pressure * Math.Sqrt(3))/2, y - (int)(_penSize * pressure) / 2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+        _whiteboard.texture.SetPixels(x - (int)(_penSize * pressure) / 2, y - (int)(_penSize * pressure * Math.Sqrt(3))/2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+
+        _whiteboard.texture.SetPixels(x + (int)(_penSize * pressure * Math.Sqrt(3))/2, y - (int)(_penSize * pressure) / 2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+        _whiteboard.texture.SetPixels(x + (int)(_penSize * pressure) / 2, y - (int)(_penSize * pressure * Math.Sqrt(3))/2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+
+        _whiteboard.texture.SetPixels(x + (int)(_penSize * pressure * Math.Sqrt(3))/2, y + (int)(_penSize * pressure) / 2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+        _whiteboard.texture.SetPixels(x + (int)(_penSize * pressure) / 2, y + (int)(_penSize * pressure * Math.Sqrt(3))/2, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors);
+
+    }
+
     private void Swap()
     {
         targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float pressure);
@@ -171,4 +200,10 @@ public class PointToDraw : MonoBehaviour
             }
         }
     }
+
+   /* private void Bezier(Vector2 p0, Vector2 p1, Vector2 p2, float t)
+    {
+        float pt = p0 * Math.Pow(t, 2) + p1 * 2 * t * (1 - t) + p2 * Math.Pow((1 - t), 2);
+
+    }*/
 }

@@ -1250,12 +1250,40 @@ PrefabInstance:
       value: 3072
       objectReference: {fileID: 0}
     - target: {fileID: 7260778079806023969, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260778079806023969, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260778079806023969, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260778079806023969, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260778079806023969, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 50b28fe5da2fea944b683dab198d1cdb, type: 2}
     - target: {fileID: 7260778079806023971, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260778079806023974, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260778079806023975, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
+      propertyPath: textureSize.x
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260778079806023975, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
+      propertyPath: textureSize.y
+      value: 12288
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
