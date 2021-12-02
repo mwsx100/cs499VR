@@ -1279,11 +1279,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7260778079806023975, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
       propertyPath: textureSize.x
-      value: 4096
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 7260778079806023975, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
       propertyPath: textureSize.y
-      value: 12288
+      value: 6144
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6fffed709e5ba049b0618c850241cb7, type: 3}
