@@ -349,7 +349,7 @@ public class PointToDraw : MonoBehaviour
            // _whiteboard.texture.SetPixels(lerpX, lerpY, blockWidth: (int)(_penSize * pressure), blockHeight: (int)(_penSize * pressure), _colors); //center/origin square
       
             PixelCircle2(lerpX, lerpY, _whiteboard, _penSize, pressure, _colors);
-          //  Spray(_whiteboard, _colors[0], lerpX, lerpY, (int)(_penSize * pressure));
+           // Spray2(_whiteboard, _colors[0], lerpX, lerpY, (int)(_penSize * pressure));
             //  DrawCircle(_whiteboard, _colors[0], lerpX, lerpY, (int)(_penSize * pressure));
         }
         return pressure;
@@ -505,7 +505,7 @@ public class PointToDraw : MonoBehaviour
                 }
     }
 
-    private void Spray(Whiteboard _whiteboard, Color color, int x, int y, int radius) //spray using system.random
+    private void Spray(Whiteboard _whiteboard, Color color, int x, int y, int radius) //spray using system.random, doesnt really look like a spray looks more like a realistic brush
     {
         var rand = new System.Random();
         int incr;
@@ -516,11 +516,11 @@ public class PointToDraw : MonoBehaviour
                 {
                     _whiteboard.texture.SetPixel(u, v, color);
                     incr = rand.Next(0, 20);
-                    u += incr; v += incr;
+                    v += incr;// v += incr;
                 }
     }
 
-    private void Spray2(Whiteboard _whiteboard, Color color, int x, int y, int radius) //spray using UnityEngine.Random
+    private void Spray2(Whiteboard _whiteboard, Color color, int x, int y, int radius) //spray using UnityEngine.Random. looks more like a spray. 
     {
 
         float rSquared = radius * radius;
@@ -530,7 +530,7 @@ public class PointToDraw : MonoBehaviour
                 {
                     Vector2 randPoint = UnityEngine.Random.insideUnitCircle * radius;
                     _whiteboard.texture.SetPixel((int)randPoint.x + x, (int)randPoint.y + y, color);
-                    u++; v++;
+                    u+=5;                  //increase the value u gets incremented to  make the spray particles more spread out
                 }
     }
 
