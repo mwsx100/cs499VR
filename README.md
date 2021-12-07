@@ -1,6 +1,8 @@
 # cs499VR
 Semester project for CS499
 
+<img width="414" alt="Logo" src="https://user-images.githubusercontent.com/61160586/144948089-98e7f889-8a04-47cb-ad1a-108c6fecc228.png">
+
 in Assets folder, there is a folder called Prefabs, in Prefabs there is the VRRig set up with some preset configurations. You can drag that into any scene so you don't have to build a VRRig object from scratch every time.
 
 # Project Aspect:
@@ -35,6 +37,8 @@ GraffitiVR is a hybrid gaming experience. At its core it is a painting experienc
 - Grab either a spray paint can, or spray gun.
 - Go to any paintable object (most things that are not complex/tiled textures)
 - Spray paint on the object like you would in real life!
+
+<img width="763" alt="Game and Code" src="https://user-images.githubusercontent.com/61160586/144948884-ab2e80d7-258b-4fa1-9548-65257c02d6d1.png">
 
 # Application Design:
 - The user will be loaded into the main environment.
